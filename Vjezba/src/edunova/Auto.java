@@ -43,6 +43,14 @@ public class Auto {
 	public void setJakostMotora(double jakostMotora) {
 		this.jakostMotora = jakostMotora;
 	}
+
+	@Override
+	public String toString() {
+		return "Auto [vlasnik=" + vlasnik + ", jacina=" + jacina + ", brojVrata=" + brojVrata + ", jakostMotora="
+				+ jakostMotora + ", getVlasnik()=" + getVlasnik() + ", getJacina()=" + getJacina() + ", getBrojVrata()="
+				+ getBrojVrata() + ", getJakostMotora()=" + getJakostMotora() + "]";
+	}
+	
 	
 	
 }
