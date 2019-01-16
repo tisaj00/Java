@@ -30,6 +30,7 @@ public class Auto {
 	public int getJacina() {
 		return jacina;
 	}
+	
 	public void setJacina(int jacina) {
 		this.jacina = jacina;
 	}
