@@ -6,16 +6,18 @@ public class Auto {
 	private int jacina;
 	private int brojVrata;
 	private double jakostMotora;
+	private double cijena;
 	
 	public Auto() {
 		System.out.println("prazan konsturktor");
 	}
 	
-	public Auto(String vlasnik, int jacina, int brojVrata, double jakostMotora) {
+	public Auto(String vlasnik, int jacina, int brojVrata, double jakostMotora,double cijena) {
 		this.vlasnik = vlasnik;
 		this.jacina = jacina;
 		this.brojVrata = brojVrata;
 		this.jakostMotora = jakostMotora;
+		this.cijena=cijena;
 		System.out.println("puni konstruktor");
 	}
 	
