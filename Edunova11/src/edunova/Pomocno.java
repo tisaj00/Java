@@ -10,6 +10,7 @@ public class Pomocno {
 		
 		while(true) {
 			System.out.print(poruka + ": ");
+			
 			try {
 				vrati=Integer.parseInt(ulaz.nextLine());
 				if(vrati>=min && vrati<=max) {
@@ -28,7 +29,7 @@ public class Pomocno {
 	public static String ucitajString(Scanner ulaz, String string) {
 		String ucitao;
 		while(true) {
-			System.out.print(": " + string);
+			System.out.print(string+": ");
 			ucitao=ulaz.nextLine();
 			if(ucitao.trim().length()!=0) {
 				return ucitao;
@@ -41,7 +42,8 @@ public class Pomocno {
 	public static BigDecimal ucitajDecimalniBroj(Scanner ulaz, String string) {
 		
 		while(true) {
-			System.out.print(": " + string);
+			System.out.print(string+": ");
+			
 			try {
 				return new BigDecimal(ulaz.nextLine());
 			} catch (Exception e) {

@@ -30,12 +30,16 @@ public class Start {
 	private void odabir() {
 		System.out.println("CRUD primjer");
 		System.out.println("Unesite broj za akciju");
-		System.out.println("1: dodaj novu osobu");
-		System.out.println("2: promjeni postojeću osobu");
-		System.out.println("3: obriši osobu");
-		System.out.println("4: izlistaj sve osobe");
-		System.out.println("5: Izlaz iz programa");
-		switch (Pomocno.ucitajBroj(ulaz,"Unesi odabir", 1, 5)) {
+		System.out.println("1: Dodaj novu osobu");
+		System.out.println("2: Promjeni postojeću osobu");
+		System.out.println("3: Obriši osobu");
+		System.out.println("4: Izlistaj sve osobe");
+		System.out.println("5: Brisanje svake osobe čija šifra je parni broj");
+		System.out.println("6: Ispis imena i prezimena osobe s najvećim primanjima");
+		System.out.println("7: Ispis prosjeka svih primanja");
+		System.out.println("8: Dodavanje 10 osoba s slučajnim vrijednostima");
+		System.out.println("9: Izlaz iz programa");
+		switch (Pomocno.ucitajBroj(ulaz,"Unesi odabir", 1, 9)) {
 		case 1:
 			dodajNovuOsobu();
 			break;
@@ -49,12 +53,43 @@ public class Start {
 			izlistajSveOsobe();
 			break;
 		case 5:
+			brisanjeParnihOsoba();
 			return;
-
+		case 6:
+			najvecePrimanje();
+			break;
+		case 7:
+			prosjekPrimanja();
+			break;
+		case 8:
+			slucajneOsobe();
+			break;
+		case 9:
+			return;
 		default:
 			break;
 		}
 		odabir();
+	}
+
+	private void brisanjeParnihOsoba() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void slucajneOsobe() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void prosjekPrimanja() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void najvecePrimanje() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	private void obrisiOsobu() {
@@ -119,3 +154,14 @@ public class Start {
 	}
 
 }
+
+//Domaća zadaća:
+//Implementirati kontrolu da pri dodavanju nove osobe ne može biti ista šifra koja je već dodjeljena
+//Unijeti kontrole da iznos ne smije biti manji od 0
+//Implementirati mehanizam da kod promjene osobe ukoliko unese prazno ostane postojeća vrijednost.
+//Unijeti nove opcije programa:
+//6: Ispis imena i prezimena osobe s najvećim primanjima
+//7: Ispis prosjeka svih primanja
+//8: Dodavanje 10 osoba s slučajnim vrijednostima
+//9: Brisanje svake osobe čija šifra je parni broj
+
