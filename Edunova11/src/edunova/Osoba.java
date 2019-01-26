@@ -10,10 +10,6 @@ public class Osoba {
 	private String prezime;
 	private BigDecimal primanje;
 	
-	
-	
-	
-	
 	public Osoba(int sifra, String ime, String prezime, BigDecimal primanje) {
 		super();
 		this.sifra = sifra;

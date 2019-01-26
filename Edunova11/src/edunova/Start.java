@@ -1,7 +1,9 @@
 package edunova;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Start {
@@ -26,7 +28,6 @@ public class Start {
 
 		
 	}
-
 	private void odabir() {
 		System.out.println("CRUD primjer");
 		System.out.println("Unesite broj za akciju");
@@ -73,17 +74,31 @@ public class Start {
 	}
 
 	private void brisanjeParnihOsoba() {
-		// TODO Auto-generated method stub
-		
+		if(osobe.size()==0) {
+			return;
+		}
+		int index = Pomocno.ucitajBroj(ulaz, "redni broj osobe", 1, osobe.size());
+		if(index%2==0) {
+		osobe.remove(index);
+		}
 	}
 
 	private void slucajneOsobe() {
-		// TODO Auto-generated method stub
+		if(osobe.size()==0) {
+			return;
+		}
+		for(int i=0;i<=10;i++) {
+			
+		}
+		
 		
 	}
 
 	private void prosjekPrimanja() {
-		// TODO Auto-generated method stub
+		if(osobe.size()==0) {
+			return;
+		}
+		
 		
 	}
 
@@ -101,10 +116,7 @@ public class Start {
 			System.out.println((i+1) + ": " + osobe.get(i));
 		}
 		
-		int index = Pomocno.ucitajBroj(
-				ulaz, 
-				"redni broj osobe", 
-				1, osobe.size());
+		int index = Pomocno.ucitajBroj(ulaz, "redni broj osobe", 1, osobe.size());
 		osobe.remove(index-1);
 		
 		
@@ -119,17 +131,16 @@ public class Start {
 			System.out.println((i+1) + ": " + osobe.get(i));
 		}
 		
-		int index = Pomocno.ucitajBroj(
-				ulaz, 
-				"redni broj osobe", 
-				1, osobe.size());
+		int index = Pomocno.ucitajBroj(ulaz, "redni broj osobe", 1, osobe.size());
 		
 		Osoba o = osobe.get(index-1);
 		
 		o=postaviVrijednostiSvojstava(ulaz, o);
-		
+	
 		osobe.set(index-1, o);
-		
+			
+	
+			
 		
 	}
 
@@ -141,24 +152,41 @@ public class Start {
 	
 	private Osoba postaviVrijednostiSvojstava(Scanner ulaz,Osoba o) {
 		
-		o.setSifra(Pomocno.ucitajBroj(ulaz,"Unesi šifru", 1, Integer.MAX_VALUE));
+		int sifra = Pomocno.ucitajBroj(ulaz, "Unesite šifru", 1, Integer.MAX_VALUE);
+		
+		for(int i=0;i<osobe.size();i++) {
+			if(sifra==osobe.get(i).getSifra()) {
+				System.err.println("Osoba s tom šifrom već postoji.");
+				odabir();						
+			}				
+			
+		}
+		o.setSifra(sifra);
+		
 		o.setIme(Pomocno.ucitajString(ulaz,"Unesi ime"));
 		o.setPrezime(Pomocno.ucitajString(ulaz, "Unesi prezime"));
-		o.setPrimanje(Pomocno.ucitajDecimalniBroj(ulaz,"Unesi primanje"));
+		
+		BigDecimal uvijet = Pomocno.ucitajDecimalniBroj(ulaz, "Unesi primanje");
+		if(uvijet.compareTo(BigDecimal.ZERO)<0) {
+			System.err.println("Primanje mora bit veće od 0");
+			odabir();
+		}
+		o.setPrimanje(uvijet);
 		
 		return o;
 	}
-
+	
 	public static void main(String[] args) {
 		new Start();
 	}
 
 }
 
+
 //Domaća zadaća:
-//Implementirati kontrolu da pri dodavanju nove osobe ne može biti ista šifra koja je već dodjeljena
-//Unijeti kontrole da iznos ne smije biti manji od 0
-//Implementirati mehanizam da kod promjene osobe ukoliko unese prazno ostane postojeća vrijednost.
+//Implementirati kontrolu da pri dodavanju nove osobe ne može biti ista šifra koja je već dodjeljena  //rjeseno
+//Unijeti kontrole da iznos ne smije biti manji od 0		//rjeseno
+//Implementirati mehanizam da kod promjene osobe ukoliko unese prazno ostane postojeća vrijednost.  
 //Unijeti nove opcije programa:
 //6: Ispis imena i prezimena osobe s najvećim primanjima
 //7: Ispis prosjeka svih primanja

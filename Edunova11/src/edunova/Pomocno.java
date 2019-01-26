@@ -21,6 +21,7 @@ public class Pomocno {
 			} catch (Exception e) {
 				System.out.println("Nije cijeli broj u rasponu " + min + " - " + max);
 			}
+	
 		}
 		
 		return vrati;
@@ -52,5 +53,6 @@ public class Pomocno {
 		}
 		
 	}
+
 
 }
