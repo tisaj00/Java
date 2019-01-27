@@ -77,27 +77,41 @@ public class Start {
 		if(osobe.size()==0) {
 			return;
 		}
-		int index = Pomocno.ucitajBroj(ulaz, "redni broj osobe", 1, osobe.size());
-		if(index%2==0) {
-		osobe.remove(index);
+		for(int i=0;i<osobe.size();i++) {
+			if(osobe.get(i).getSifra()%2==0) {
+				osobe.remove(i);
+			}
 		}
+		System.out.println("Izbrisali ste sve osobe s parnim brojem šifre");
+		odabir();
 	}
 
 	private void slucajneOsobe() {
-		if(osobe.size()==0) {
-			return;
-		}
-		for(int i=0;i<=10;i++) {
+		for(int i=0;i<10;i++) {
+			Osoba sl = new Osoba();
+			sl.setIme(Pomocno.slucajniString());
+			sl.setPrezime(Pomocno.slucajniString());
+			sl.setPrimanje(Pomocno.slucajniBigDecimal());
+			sl.setSifra(Pomocno.slucajniInteger());
+			osobe.add(sl);
+			}
+			System.out.println("Uspješno ste dodali 10 nasumičnih osoba sa slučajnim podacima");
 			
-		}
 		
 		
 	}
-
 	private void prosjekPrimanja() {
 		if(osobe.size()==0) {
 			return;
 		}
+		BigDecimal duz= new BigDecimal(osobe.size());
+		BigDecimal zbroj = new BigDecimal(0.0);
+		BigDecimal prosjek = new BigDecimal(0.0);
+		for(int i=0;i<osobe.size();i++) {
+		zbroj=zbroj.add(osobe.get(i).getPrimanje());
+		}
+		prosjek=zbroj.divide(duz);
+		System.out.println("\n"+"Prosjek primanja svih osoba iznosi = "+prosjek +"\n");
 		
 		
 	}
@@ -165,14 +179,15 @@ public class Start {
 		
 		o.setIme(Pomocno.ucitajString(ulaz,"Unesi ime"));
 		o.setPrezime(Pomocno.ucitajString(ulaz, "Unesi prezime"));
-		
-		BigDecimal uvijet = Pomocno.ucitajDecimalniBroj(ulaz, "Unesi primanje");
-		if(uvijet.compareTo(BigDecimal.ZERO)<0) {
-			System.err.println("Primanje mora bit veće od 0");
-			odabir();
-		}
-		o.setPrimanje(uvijet);
-		
+		while(true) {
+			BigDecimal uvijet = Pomocno.ucitajDecimalniBroj(ulaz, "Unesi primanje");
+			if(uvijet.compareTo(BigDecimal.ZERO)>=0) {
+				o.setPrimanje(uvijet);
+				break;
+			}
+			else {
+				System.err.println("Iznos primanja ne smije bit manji od 0");}
+			}
 		return o;
 	}
 	
@@ -189,7 +204,7 @@ public class Start {
 //Implementirati mehanizam da kod promjene osobe ukoliko unese prazno ostane postojeća vrijednost.  
 //Unijeti nove opcije programa:
 //6: Ispis imena i prezimena osobe s najvećim primanjima
-//7: Ispis prosjeka svih primanja
-//8: Dodavanje 10 osoba s slučajnim vrijednostima
-//9: Brisanje svake osobe čija šifra je parni broj
+//7: Ispis prosjeka svih primanja //rjeseno
+//8: Dodavanje 10 osoba s slučajnim vrijednostima //rjeseno
+//9: Brisanje svake osobe čija šifra je parni broj //rjeseno
 

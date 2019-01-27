@@ -1,7 +1,9 @@
 package edunova;
 
 import java.math.BigDecimal;
+import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Pomocno {
 	
@@ -52,6 +54,31 @@ public class Pomocno {
 			}
 		}
 		
+	}
+	
+	public static String slucajniString() {
+        String SALTCHARS = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpRrSsTtUuVvZz";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 10) { 
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        String saltStr = salt.toString();
+        return saltStr;
+	}
+
+	public static int slucajniInteger() {
+		int randomNum = ThreadLocalRandom.current().nextInt(1, 10000 + 1);
+
+	    return randomNum;
+	    }
+
+	public static BigDecimal slucajniBigDecimal() {
+		 BigDecimal max = new BigDecimal(30000 + ".6");
+	        BigDecimal randFromDouble = new BigDecimal(Math.random());
+	        BigDecimal actualRandomDec = randFromDouble.multiply(max);
+	        return actualRandomDec;
 	}
 
 
